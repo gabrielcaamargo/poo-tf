@@ -1,19 +1,27 @@
 package entities;
 
+import enums.MusicaGenero;
+
 public class Musica {
 	private String nome;
 	private double duracao;
+	private MusicaGenero genero;
 
-	public Musica(String nome, double duracao) {
+	public Musica(String nome, double duracao, MusicaGenero genero) {
 		this.nome = nome;
 		this.duracao = duracao;
+		this.genero = genero;
 	}
 
 	public String getNome() {
 		return nome;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public double getDuracao() {
+		return duracao;
+	}
+
+	public MusicaGenero getGenero() {
+		return genero;
 	}
 }
