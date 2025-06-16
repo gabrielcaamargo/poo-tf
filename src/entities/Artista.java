@@ -1,30 +1,37 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Artista {
-	private String nome;
+	private String nomeArtista;
 	private String nacionalidade;
-	private int anoNascimento;
+	private String funcao;
 	private List<Album> albuns;
 
-	public Artista(String nome, String nacionalidade, int anoNascimento, List<Album> albuns) {
-		this.nome = nome;
+	public Artista(String nomeArtista, String nacionalidade, String funcao) {
+		this.nomeArtista = nomeArtista;
 		this.nacionalidade = nacionalidade;
-		this.anoNascimento = anoNascimento;
-		this.albuns = albuns;
+		this.funcao = funcao;
+		this.albuns = new ArrayList<>();
 	}
 
-	public String getNome() {
-		return nome;
+	public Artista(String nomeArtista, String nacionalidade) {
+		this.nomeArtista = nomeArtista;
+		this.nacionalidade = nacionalidade;
+		this.albuns = new ArrayList<>();
+	}
+
+	public String getNomeArtista() {
+		return nomeArtista;
 	}
 
 	public String getNacionalidade() {
 		return nacionalidade;
 	}
 
-	public int getAnoNascimento() {
-		return anoNascimento;
+	public String getFuncao() {
+		return funcao;
 	}
 
 	public List<Album> getAlbuns() {
@@ -33,5 +40,10 @@ public class Artista {
 
 	public void addAlbum(Album album) {
 		this.albuns.add(album);
+	}
+
+	@Override
+	public String toString() {
+		return String.format("Artista: %s, Nacionalidade: %s, Função: %s", nomeArtista, nacionalidade, funcao);
 	}
 }
