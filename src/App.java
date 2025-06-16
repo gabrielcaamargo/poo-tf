@@ -44,7 +44,7 @@ public class App {
 
         ironMaiden.addAlbum(theNumberOfTheBeastAlbum);
 
-        System.out.println("Detalhes do álbum:");
-        System.out.println(theNumberOfTheBeastAlbum);
+        System.out.println("Banda: " + ironMaiden.getNomeArtista());
+        System.out.println("Iron Maiden Albuns: " + ironMaiden.getAlbuns());
     }
 }
