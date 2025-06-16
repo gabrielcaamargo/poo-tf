@@ -46,5 +46,7 @@ public class App {
 
         System.out.println("Banda: " + ironMaiden.getNomeArtista());
         System.out.println("Iron Maiden Albuns: " + ironMaiden.getAlbuns());
+
+        System.out.println(theNumberOfTheBeastAlbum.buscaMusicaPorNome("Hallowed"));
     }
 }
