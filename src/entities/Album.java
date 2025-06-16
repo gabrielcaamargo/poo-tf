@@ -37,4 +37,11 @@ public class Album extends Midia {
 
 		return this.getTotalStreams() / musicas.size();
 	}
+
+	public List<Musica> getMaisPopulares() {
+		musicas.sort((Musica m1, Musica m2) -> Integer.compare(m2.getStreams(), m1.getStreams()));
+
+		List<Musica> musicasMaisPopulares = musicas.subList(0, Math.min(5, musicas.size()));
+		return musicasMaisPopulares;
+	}
 }
