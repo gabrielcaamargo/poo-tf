@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import enums.MusicaGenero;
 
 public class Album {
@@ -7,9 +9,9 @@ public class Album {
 	private String artista;
 	private int anoLancamento;
 	private MusicaGenero genero;
-	private Musica[] musicas;
+	private List<Musica> musicas;
 
-	public Album(String nome, String artista, int anoLancamento, MusicaGenero genero, Musica[] musicas) {
+	public Album(String nome, String artista, int anoLancamento, MusicaGenero genero, List<Musica> musicas) {
 		this.nome = nome;
 		this.artista = artista;
 		this.anoLancamento = anoLancamento;
@@ -33,7 +35,7 @@ public class Album {
 		return genero;
 	}
 
-	public Musica[] getMusicas() {
+	public List<Musica> getMusicas() {
 		return musicas;
 	}
 }
