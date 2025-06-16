@@ -21,4 +21,11 @@ public class Musica extends Midia {
 		int segundos = duracao % 60;
 		return String.format("%d:%02d", minutos, segundos);
 	}
+
+	@Override
+	public String toString() {
+		return String.format("Musica: %s, Duração: %s, Gênero: %s, Ano: %d, Streams: %d",
+				getNome(), duracaoEmMinutos(), getGenero(), getAnoLancamento(), streams);
+	}
+
 }
