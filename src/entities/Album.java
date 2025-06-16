@@ -50,6 +50,19 @@ public class Album<T extends Artista> extends Midia {
 		return musicasMaisPopulares;
 	}
 
+	public List<Musica> getMenosPopulares() {
+		musicas.sort((Musica m1, Musica m2) -> Integer.compare(m1.getStreams(), m2.getStreams()));
+
+		List<Musica> musicasMenosPopulares = musicas.subList(0, Math.min(5, musicas.size()));
+		return musicasMenosPopulares;
+	}
+
+	public List<Musica> buscaMusicaPorNome(String nome) {
+		return this.musicas.stream()
+				.filter(musica -> musica.getNome().toLowerCase().contains(nome.toLowerCase()))
+				.toList();
+	}
+
 	@Override
 	public String toString() {
 		return String.format(
