@@ -9,7 +9,6 @@ public class Banda extends Artista {
 	private MusicaGenero genero;
 	private int anoFormacao;
 	private List<Artista> integrantes;
-	private List<Album> albuns;
 
 	public Banda(String nome, String nacionalidade, MusicaGenero genero, int anoFormacao,
 			List<Album> albuns) {
@@ -18,7 +17,6 @@ public class Banda extends Artista {
 		this.genero = genero;
 		this.anoFormacao = anoFormacao;
 		this.integrantes = new ArrayList<Artista>();
-		this.albuns = albuns;
 	}
 
 	public void addIntegrante(Artista integrante) {
@@ -30,5 +28,4 @@ public class Banda extends Artista {
 		return String.format("Banda: %s, Nacionalidade: %s, Gênero: %s, Ano de Formação: %d, Integrantes: %s",
 				getNomeArtista(), getNacionalidade(), genero, anoFormacao, integrantes);
 	}
-
 }
