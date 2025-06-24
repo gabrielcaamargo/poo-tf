@@ -17,6 +17,7 @@ public class MainFrame extends JFrame {
         cardLayout = new CardLayout();
         cardPanel = new JPanel(cardLayout);
 
+
         HomePanel homePanel = new HomePanel(this);
         VisualizarPanel visualizarPanel = new VisualizarPanel();
         CadastroPanel cadastroPanel = new CadastroPanel();
@@ -46,8 +47,9 @@ public class MainFrame extends JFrame {
 
 class HomePanel extends JPanel {
     public HomePanel(MainFrame frame) {
-        setLayout(new GridLayout(6, 1, 10, 10));
-        setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
+        setLayout(new BorderLayout());
+        JPanel buttonPanel = new JPanel(new GridLayout(5, 1, 10, 10));
+        buttonPanel.setBorder(BorderFactory.createEmptyBorder(40, 200, 40, 200));
 
         JButton btnVisualizar = new JButton("Visualizar Dados");
         JButton btnCadastrar = new JButton("Cadastrar Novo");
@@ -55,18 +57,23 @@ class HomePanel extends JPanel {
         JButton btnEstatisticas = new JButton("Estatísticas");
         JButton btnExtra = new JButton("Top 5 Músicas Populares");
 
+        Dimension btnSize = new Dimension(200, 40);
+        JButton[] buttons = {btnVisualizar, btnCadastrar, btnBuscar, btnEstatisticas, btnExtra};
+        for (JButton btn : buttons) {
+            btn.setPreferredSize(btnSize);
+            buttonPanel.add(btn);
+        }
+
         btnVisualizar.addActionListener(e -> frame.showCard("visualizar"));
         btnCadastrar.addActionListener(e -> frame.showCard("cadastro"));
         btnBuscar.addActionListener(e -> frame.showCard("busca"));
         btnEstatisticas.addActionListener(e -> frame.showCard("estatisticas"));
         btnExtra.addActionListener(e -> frame.showCard("extra"));
 
-        add(new JLabel("Bem-vindo ao Pucfy", SwingConstants.CENTER));
-        add(btnVisualizar);
-        add(btnCadastrar);
-        add(btnBuscar);
-        add(btnEstatisticas);
-        add(btnExtra);
+        JLabel title = new JLabel("Bem-vindo ao Pucfy", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 20));
+        add(title, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.CENTER);
     }
 }
 
@@ -100,6 +107,7 @@ class FormArtista extends JPanel {
         JTextField nacionalidade = new JTextField();
         JTextField funcao = new JTextField();
         JButton salvar = new JButton("Salvar Artista");
+        salvar.setPreferredSize(new Dimension(150, 30));
 
         add(new JLabel("Nome:"));
         add(nome);
@@ -122,6 +130,7 @@ class FormBanda extends JPanel {
         JComboBox<String> genero = new JComboBox<>(new String[]{"ROCK", "POP", "JAZZ", "RAP", "REGGAE", "ALTERNATIVE", "BLUES"});
         JTextField anoFormacao = new JTextField();
         JButton salvar = new JButton("Salvar Banda");
+        salvar.setPreferredSize(new Dimension(150, 30));
 
         add(new JLabel("Nome:"));
         add(nome);
@@ -144,8 +153,9 @@ class FormAlbum extends JPanel {
         JTextField nome = new JTextField();
         JTextField ano = new JTextField();
         JComboBox<String> genero = new JComboBox<>(new String[]{"ROCK", "POP", "JAZZ", "RAP", "REGGAE", "ALTERNATIVE", "BLUES"});
-        JTextField artista = new JTextField(); // Pode ser substituído por ComboBox com artistas existentes
+        JTextField artista = new JTextField();
         JButton salvar = new JButton("Salvar Álbum");
+        salvar.setPreferredSize(new Dimension(150, 30));
 
         add(new JLabel("Nome do Álbum:"));
         add(nome);
@@ -171,6 +181,7 @@ class FormMusica extends JPanel {
         JTextField duracao = new JTextField();
         JTextField streams = new JTextField();
         JButton salvar = new JButton("Salvar Música");
+        salvar.setPreferredSize(new Dimension(150, 30));
 
         add(new JLabel("Nome da Música:"));
         add(nome);
