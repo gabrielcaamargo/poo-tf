@@ -61,7 +61,7 @@ class HomePanel extends JPanel {
         btnEstatisticas.addActionListener(e -> frame.showCard("estatisticas"));
         btnExtra.addActionListener(e -> frame.showCard("extra"));
 
-        add(new JLabel("Pucfy", SwingConstants.CENTER));
+        add(new JLabel("Bem-vindo ao Pucfy", SwingConstants.CENTER));
         add(btnVisualizar);
         add(btnCadastrar);
         add(btnBuscar);
@@ -80,7 +80,110 @@ class VisualizarPanel extends JPanel {
 class CadastroPanel extends JPanel {
     public CadastroPanel() {
         setLayout(new BorderLayout());
-        add(new JLabel("Cadastrar Entidade", SwingConstants.CENTER), BorderLayout.NORTH);
+        JTabbedPane tabbedPane = new JTabbedPane();
+
+        tabbedPane.addTab("Artista", new FormArtista());
+        tabbedPane.addTab("Banda", new FormBanda());
+        tabbedPane.addTab("Álbum", new FormAlbum());
+        tabbedPane.addTab("Música", new FormMusica());
+
+        add(tabbedPane, BorderLayout.CENTER);
+    }
+}
+
+class FormArtista extends JPanel {
+    public FormArtista() {
+        setLayout(new GridLayout(4, 2, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
+
+        JTextField nome = new JTextField();
+        JTextField nacionalidade = new JTextField();
+        JTextField funcao = new JTextField();
+        JButton salvar = new JButton("Salvar Artista");
+
+        add(new JLabel("Nome:"));
+        add(nome);
+        add(new JLabel("Nacionalidade:"));
+        add(nacionalidade);
+        add(new JLabel("Função:"));
+        add(funcao);
+        add(new JLabel());
+        add(salvar);
+    }
+}
+
+class FormBanda extends JPanel {
+    public FormBanda() {
+        setLayout(new GridLayout(5, 2, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
+
+        JTextField nome = new JTextField();
+        JTextField nacionalidade = new JTextField();
+        JComboBox<String> genero = new JComboBox<>(new String[]{"ROCK", "POP", "JAZZ", "RAP", "REGGAE", "ALTERNATIVE", "BLUES"});
+        JTextField anoFormacao = new JTextField();
+        JButton salvar = new JButton("Salvar Banda");
+
+        add(new JLabel("Nome:"));
+        add(nome);
+        add(new JLabel("Nacionalidade:"));
+        add(nacionalidade);
+        add(new JLabel("Gênero:"));
+        add(genero);
+        add(new JLabel("Ano de Formação:"));
+        add(anoFormacao);
+        add(new JLabel());
+        add(salvar);
+    }
+}
+
+class FormAlbum extends JPanel {
+    public FormAlbum() {
+        setLayout(new GridLayout(5, 2, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
+
+        JTextField nome = new JTextField();
+        JTextField ano = new JTextField();
+        JComboBox<String> genero = new JComboBox<>(new String[]{"ROCK", "POP", "JAZZ", "RAP", "REGGAE", "ALTERNATIVE", "BLUES"});
+        JTextField artista = new JTextField(); // Pode ser substituído por ComboBox com artistas existentes
+        JButton salvar = new JButton("Salvar Álbum");
+
+        add(new JLabel("Nome do Álbum:"));
+        add(nome);
+        add(new JLabel("Ano de Lançamento:"));
+        add(ano);
+        add(new JLabel("Gênero:"));
+        add(genero);
+        add(new JLabel("Artista/Banda:"));
+        add(artista);
+        add(new JLabel());
+        add(salvar);
+    }
+}
+
+class FormMusica extends JPanel {
+    public FormMusica() {
+        setLayout(new GridLayout(6, 2, 10, 10));
+        setBorder(BorderFactory.createEmptyBorder(20, 50, 20, 50));
+
+        JTextField nome = new JTextField();
+        JComboBox<String> genero = new JComboBox<>(new String[]{"ROCK", "POP", "JAZZ", "RAP", "REGGAE", "ALTERNATIVE", "BLUES"});
+        JTextField ano = new JTextField();
+        JTextField duracao = new JTextField();
+        JTextField streams = new JTextField();
+        JButton salvar = new JButton("Salvar Música");
+
+        add(new JLabel("Nome da Música:"));
+        add(nome);
+        add(new JLabel("Gênero:"));
+        add(genero);
+        add(new JLabel("Ano de Lançamento:"));
+        add(ano);
+        add(new JLabel("Duração (segundos):"));
+        add(duracao);
+        add(new JLabel("Streams:"));
+        add(streams);
+        add(new JLabel());
+        add(salvar);
     }
 }
 
