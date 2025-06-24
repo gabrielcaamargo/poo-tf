@@ -1,9 +1,10 @@
 
-import entities.Album;
-import entities.Artista;
-import entities.Banda;
-import entities.Musica;
+import entities.*;
 import enums.MusicaGenero;
+
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -48,5 +49,6 @@ public class App {
         System.out.println("Iron Maiden Albuns: " + ironMaiden.getAlbuns());
 
         System.out.println(theNumberOfTheBeastAlbum.buscaMusicaPorNome("Hallowed"));
+
     }
 }
