@@ -28,15 +28,12 @@ public class MainFrame extends JFrame {
         CadastroPanel cadastroPanel = new CadastroPanel();
         BuscaPanel buscaPanel = new BuscaPanel();
         EstatisticasPanel estatisticasPanel = new EstatisticasPanel();
-        FuncionalidadeExtraPanel extraPanel = new FuncionalidadeExtraPanel();
 
         cardPanel.add(homePanel, "home");
         cardPanel.add(visualizarPanel, "visualizar");
         cardPanel.add(cadastroPanel, "cadastro");
         cardPanel.add(buscaPanel, "busca");
         cardPanel.add(estatisticasPanel, "estatisticas");
-        cardPanel.add(extraPanel, "extra");
-
         add(cardPanel);
         setVisible(true);
     }
@@ -60,10 +57,9 @@ class HomePanel extends JPanel {
         JButton btnCadastrar = new JButton("Cadastrar Novo");
         JButton btnBuscar = new JButton("Buscar");
         JButton btnEstatisticas = new JButton("Estatísticas");
-        JButton btnExtra = new JButton("Top 5 Músicas Populares");
 
         Dimension btnSize = new Dimension(200, 40);
-        JButton[] buttons = { btnVisualizar, btnCadastrar, btnBuscar, btnEstatisticas, btnExtra };
+        JButton[] buttons = { btnVisualizar, btnCadastrar, btnBuscar, btnEstatisticas};
         for (JButton btn : buttons) {
             btn.setPreferredSize(btnSize);
             buttonPanel.add(btn);
@@ -73,7 +69,6 @@ class HomePanel extends JPanel {
         btnCadastrar.addActionListener(e -> frame.showCard("cadastro"));
         btnBuscar.addActionListener(e -> frame.showCard("busca"));
         btnEstatisticas.addActionListener(e -> frame.showCard("estatisticas"));
-        btnExtra.addActionListener(e -> frame.showCard("extra"));
 
         JLabel title = new JLabel("Bem-vindo ao Pucfy", SwingConstants.CENTER);
         title.setFont(new Font("Arial", Font.BOLD, 20));
@@ -94,19 +89,15 @@ class VisualizarPanel extends JPanel {
 
         JTabbedPane tabbedPane = new JTabbedPane();
 
-        // Aba de Artistas
         JPanel artistasPanel = createArtistasPanel();
         tabbedPane.addTab("Artistas", artistasPanel);
 
-        // Aba de Bandas
         JPanel bandasPanel = createBandasPanel();
         tabbedPane.addTab("Bandas", bandasPanel);
 
-        // Aba de Álbuns
         JPanel albunsPanel = createAlbunsPanel();
         tabbedPane.addTab("Álbuns", albunsPanel);
 
-        // Aba de Músicas
         JPanel musicasPanel = createMusicasPanel();
         tabbedPane.addTab("Músicas", musicasPanel);
 
@@ -136,14 +127,12 @@ class VisualizarPanel extends JPanel {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
-        // Atualizar lista de artistas
         updateArtistasList(listModel);
 
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(700, 400));
         panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Botão para atualizar a lista
         JButton atualizar = new JButton("Atualizar Lista");
         atualizar.addActionListener(e -> updateArtistasList(listModel));
 
@@ -162,14 +151,12 @@ class VisualizarPanel extends JPanel {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
-        // Atualizar lista de bandas
         updateBandasList(listModel);
 
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(700, 400));
         panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Botão para atualizar a lista
         JButton atualizar = new JButton("Atualizar Lista");
         atualizar.addActionListener(e -> updateBandasList(listModel));
 
@@ -188,14 +175,12 @@ class VisualizarPanel extends JPanel {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
-        // Atualizar lista de álbuns
         updateAlbunsList(listModel);
 
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(700, 400));
         panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Botão para atualizar a lista
         JButton atualizar = new JButton("Atualizar Lista");
         atualizar.addActionListener(e -> updateAlbunsList(listModel));
 
@@ -214,14 +199,12 @@ class VisualizarPanel extends JPanel {
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setFont(new Font("Monospaced", Font.PLAIN, 12));
 
-        // Atualizar lista de músicas
         updateMusicasList(listModel);
 
         JScrollPane scrollPane = new JScrollPane(list);
         scrollPane.setPreferredSize(new Dimension(700, 400));
         panel.add(scrollPane, BorderLayout.CENTER);
 
-        // Botão para atualizar a lista
         JButton atualizar = new JButton("Atualizar Lista");
         atualizar.addActionListener(e -> updateMusicasList(listModel));
 
@@ -290,7 +273,6 @@ class CadastroPanel extends JPanel {
         tabbedPane.addTab("Banda", new FormBanda());
         tabbedPane.addTab("Álbum", new FormAlbum());
         tabbedPane.addTab("Música", new FormMusica());
-        tabbedPane.addTab("Integrante", new FormIntegrante());
 
         add(tabbedPane, BorderLayout.CENTER);
     }
@@ -529,7 +511,6 @@ class FormMusica extends JPanel {
         JComboBox<String> albumCombo = new JComboBox<>();
         updateAlbunsCombo(albumCombo);
 
-        // Botão para atualizar a lista de álbuns
         JButton atualizarAlbuns = new JButton("Atualizar Lista");
         atualizarAlbuns.addActionListener(e -> updateAlbunsCombo(albumCombo));
 
@@ -621,7 +602,6 @@ class FormIntegrante extends JPanel {
         JComboBox<String> artistasCombo = new JComboBox<>();
         updateArtistasCombo(artistasCombo);
 
-        // Botões para atualizar as listas
         JButton atualizarBandas = new JButton("Atualizar Bandas");
         atualizarBandas.addActionListener(e -> updateBandasCombo(bandasCombo));
 
@@ -635,14 +615,13 @@ class FormIntegrante extends JPanel {
             String bandaNome = (String) bandasCombo.getSelectedItem();
             String artistaNome = (String) artistasCombo.getSelectedItem();
 
-            if (bandaNome == null || artistaNome == null || 
-                bandaNome.equals("Nenhuma banda cadastrada") || 
-                artistaNome.equals("Nenhum artista cadastrado")) {
+            if (bandaNome == null || artistaNome == null ||
+                    bandaNome.equals("Nenhuma banda cadastrada") ||
+                    artistaNome.equals("Nenhum artista cadastrado")) {
                 JOptionPane.showMessageDialog(this, "Selecione uma banda e um artista válidos.", "Erro", JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
-            // Encontrar a banda selecionada
             entities.Banda bandaSelecionada = null;
             for (entities.Banda b : Dados.bandas) {
                 if (b.getNomeArtista().equals(bandaNome)) {
@@ -651,7 +630,6 @@ class FormIntegrante extends JPanel {
                 }
             }
 
-            // Encontrar o artista selecionado
             entities.Artista artistaSelecionado = null;
             for (entities.Artista a : Dados.artistas) {
                 if (a.getNomeArtista().equals(artistaNome)) {
@@ -662,9 +640,9 @@ class FormIntegrante extends JPanel {
 
             if (bandaSelecionada != null && artistaSelecionado != null) {
                 bandaSelecionada.addIntegrante(artistaSelecionado);
-                JOptionPane.showMessageDialog(this, 
-                    String.format("Artista '%s' adicionado à banda '%s' com sucesso!", 
-                    artistaNome, bandaNome));
+                JOptionPane.showMessageDialog(this,
+                        String.format("Artista '%s' adicionado à banda '%s' com sucesso!",
+                                artistaNome, bandaNome));
             } else {
                 JOptionPane.showMessageDialog(this, "Erro ao encontrar banda ou artista selecionado.", "Erro", JOptionPane.ERROR_MESSAGE);
             }
@@ -699,12 +677,12 @@ class FormIntegrante extends JPanel {
 
     private void updateBandasCombo(JComboBox<String> combo) {
         combo.removeAllItems();
-        
+
         if (Dados.bandas.isEmpty()) {
             combo.addItem("Nenhuma banda cadastrada");
             return;
         }
-        
+
         for (entities.Banda b : Dados.bandas) {
             combo.addItem(b.getNomeArtista());
         }
@@ -712,12 +690,12 @@ class FormIntegrante extends JPanel {
 
     private void updateArtistasCombo(JComboBox<String> combo) {
         combo.removeAllItems();
-        
+
         if (Dados.artistas.isEmpty()) {
             combo.addItem("Nenhum artista cadastrado");
             return;
         }
-        
+
         for (entities.Artista a : Dados.artistas) {
             combo.addItem(a.getNomeArtista());
         }
@@ -727,20 +705,158 @@ class FormIntegrante extends JPanel {
 class BuscaPanel extends JPanel {
     public BuscaPanel() {
         setLayout(new BorderLayout());
-        add(new JLabel("Busca por Música", SwingConstants.CENTER), BorderLayout.NORTH);
+
+        JLabel title = new JLabel("Busca por Música", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 18));
+        add(title, BorderLayout.NORTH);
+
+        JPanel formPanel = new JPanel(new GridBagLayout());
+        formPanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 10, 50));
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(5, 5, 5, 5);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+
+        JLabel nomeMusicaLabel = new JLabel("Nome da Música:");
+        formPanel.add(nomeMusicaLabel, gbc);
+
+        gbc.gridy++;
+        gbc.gridwidth = 1;
+
+        JTextField nomeMusicaField = new JTextField(15);
+        formPanel.add(nomeMusicaField, gbc);
+
+        gbc.gridx++;
+        JButton buscarButton = new JButton("Buscar");
+        buscarButton.setPreferredSize(new Dimension(80, 25));
+        formPanel.add(buscarButton, gbc);
+
+        JTextArea resultadoArea = new JTextArea(5, 70);
+        resultadoArea.setEditable(false);
+        resultadoArea.setFont(new Font("Monospaced", Font.PLAIN, 12));
+
+        buscarButton.addActionListener(e -> {
+            String nomeMusica = nomeMusicaField.getText().trim();
+            if (nomeMusica.isEmpty()) {
+                resultadoArea.setText("Por favor, insira o nome da música.");
+                return;
+            }
+
+            boolean encontrado = false;
+            for (Musica musica : Dados.musicas) {
+                if (musica.getNome().equalsIgnoreCase(nomeMusica)) {
+                    resultadoArea.setText(musica.toString());
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            if (!encontrado) {
+                resultadoArea.setText("Música não encontrada.");
+            }
+        });
+
+        gbc.gridx = 0;
+        gbc.gridy++;
+        gbc.gridwidth = 2;
+
+        JScrollPane scrollPane = new JScrollPane(resultadoArea);
+        formPanel.add(scrollPane, gbc);
+
+        add(formPanel, BorderLayout.CENTER);
+
+        JButton voltarButton = new JButton("Voltar ao Menu");
+        voltarButton.addActionListener(e -> {
+            Container parent = this.getParent();
+            while (!(parent instanceof MainFrame) && parent != null) {
+                parent = parent.getParent();
+            }
+            if (parent instanceof MainFrame) {
+                ((MainFrame) parent).showCard("home");
+            }
+        });
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.add(voltarButton);
+        add(bottomPanel, BorderLayout.SOUTH);
     }
 }
 
 class EstatisticasPanel extends JPanel {
     public EstatisticasPanel() {
         setLayout(new BorderLayout());
-        add(new JLabel("Estatísticas", SwingConstants.CENTER), BorderLayout.NORTH);
-    }
-}
 
-class FuncionalidadeExtraPanel extends JPanel {
-    public FuncionalidadeExtraPanel() {
-        setLayout(new BorderLayout());
-        add(new JLabel("Top 5 Músicas Populares", SwingConstants.CENTER), BorderLayout.NORTH);
+        JLabel title = new JLabel("Estatísticas", SwingConstants.CENTER);
+        title.setFont(new Font("Arial", Font.BOLD, 18));
+        add(title, BorderLayout.NORTH);
+
+        JPanel statsPanel = new JPanel(new GridLayout(6, 1, 10, 10));
+        statsPanel.setBorder(BorderFactory.createEmptyBorder(20, 50, 10, 50));
+
+        JLabel totalArtistasLabel = new JLabel("Total de Artistas: ");
+        JLabel totalBandasLabel = new JLabel("Total de Bandas: ");
+        JLabel totalMusicasLabel = new JLabel("Total de Músicas: ");
+        JLabel totalAlbunsLabel = new JLabel("Total de Álbuns: ");
+        JLabel totalStreamsLabel = new JLabel("Total de Streams por Álbum: ");
+        JLabel mediaStreamsLabel = new JLabel("Média de Streams por Álbum: ");
+        JLabel faixasPorAlbumLabel = new JLabel("Número de Faixas por Álbum: ");
+        JLabel totalPorTipoLabel = new JLabel("Total por Tipo (Bandas vs Artistas Solo): ");
+
+        statsPanel.add(totalArtistasLabel);
+        statsPanel.add(totalBandasLabel);
+        statsPanel.add(totalMusicasLabel);
+        statsPanel.add(totalAlbunsLabel);
+        statsPanel.add(totalStreamsLabel);
+        statsPanel.add(mediaStreamsLabel);
+        statsPanel.add(faixasPorAlbumLabel);
+        statsPanel.add(totalPorTipoLabel);
+
+        JButton atualizarButton = new JButton("Atualizar Dados");
+        atualizarButton.addActionListener(e -> {
+            int totalArtistas = Dados.artistas.size();
+            int totalBandas = Dados.bandas.size();
+            int totalMusicas = Dados.musicas.size();
+            int totalAlbuns = Dados.albuns.size();
+
+            int totalStreams = Dados.albuns.stream()
+                    .mapToInt(album -> album.getMusicas().stream().mapToInt(Musica::getStreams).sum())
+                    .sum();
+
+            double mediaStreams = Dados.albuns.isEmpty() ? 0 : totalStreams / (double) Dados.albuns.size();
+
+            String faixasPorAlbum = Dados.albuns.stream()
+                    .map(album -> String.format("%s: %d faixas", album.getNome(), album.getMusicas().size()))
+                    .reduce("", (acc, curr) -> acc + curr + "\n");
+
+            totalArtistasLabel.setText("Total de Artistas: " + totalArtistas);
+            totalBandasLabel.setText("Total de Bandas: " + totalBandas);
+            totalMusicasLabel.setText("Total de Músicas: " + totalMusicas);
+            totalAlbunsLabel.setText("Total de Álbuns: " + totalAlbuns);
+            totalStreamsLabel.setText("Total de Streams por Álbum: " + totalStreams);
+            mediaStreamsLabel.setText("Média de Streams por Álbum: " + String.format("%.2f", mediaStreams));
+            faixasPorAlbumLabel.setText("<html>Número de Faixas por Álbum:<br>" + faixasPorAlbum + "</html>");
+            totalPorTipoLabel.setText("Total por Tipo: Bandas = " + totalBandas + ", Artistas Solo = " + totalArtistas);
+        });
+
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.add(atualizarButton);
+
+        JButton voltarButton = new JButton("Voltar ao Menu");
+        voltarButton.addActionListener(e -> {
+            Container parent = this.getParent();
+            while (!(parent instanceof MainFrame) && parent != null) {
+                parent = parent.getParent();
+            }
+            if (parent instanceof MainFrame) {
+                ((MainFrame) parent).showCard("home");
+            }
+        });
+
+        bottomPanel.add(voltarButton);
+
+        add(statsPanel, BorderLayout.CENTER);
+        add(bottomPanel, BorderLayout.SOUTH);
     }
 }
