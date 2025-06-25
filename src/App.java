@@ -1,4 +1,7 @@
-
+import entities.Album;
+import entities.Artista;
+import entities.Banda;
+import entities.Musica;
 import entities.*;
 import enums.MusicaGenero;
 
